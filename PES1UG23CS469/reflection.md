@@ -1,12 +1,12 @@
-Static Analysis Lab Reflection
+### Reflections:
 
-1. Which issues were the easiest to fix, and which were the hardest? Why?
+#### 1. Which issues were the easiest to fix, and which were the hardest? Why?
 
 Easiest Issues: The easiest fixes were generally the Flake8 style violations (like E302 - missing blank lines, or E262 - inline comment spacing) and the Pylint naming conventions (C0103 - snake_case). Removing the unused logging import (F401) and the dangerous eval() call (B307) were also very easy, as they just required deleting or changing single lines. These were easy because the fix was mechanical and didn't require changing the program's logic.
 
 Hardest Issues: The hardest issue by far was refactoring the global variable (W0603). This wasn't a simple fix; it required a structural change to the entire program. I had to change load_data to return the stock dictionary, and then update every other function to accept stock_data as a parameter. This was difficult because it affected the data flow of the entire script, not just one isolated line.
 
-2. Did the static analysis tools report any false positives? If so, describe one example.
+#### 2. Did the static analysis tools report any false positives? If so, describe one example.
 
 In this specific lab, I did not encounter any clear false positives. Every issue reported by Pylint, Flake8, and Bandit pointed to a valid area for improvement.
 
@@ -17,7 +17,7 @@ Pylint's refactoring suggestions (removing globals, dangerous default values) le
 Flake8's style checks made the code more readable and professional.
 Even the final Pylint warning (W1203 about lazy logging) was technically correct for performance-critical applications, though it felt a bit like a "nitpick" for a small script.
 
-3. How would you integrate static analysis tools into your actual software development workflow?
+#### 3. How would you integrate static analysis tools into your actual software development workflow?
 
 I would integrate them in two primary ways:
 
@@ -25,7 +25,7 @@ Local Development: I would integrate Flake8 and Pylint directly into my IDE (lik
 
 Continuous Integration (CI): I would configure a CI pipeline (using GitHub Actions, for example) to run on every pull request. This pipeline would run the full suite of linters (Pylint, Flake8) and security scans (Bandit). I would then configure the repository to block merging any pull request until all static analysis checks have passed, acting as a final quality gate for the team.
 
-4. What tangible improvements did you observe in the code quality, readability, or potential robustness after applying the fixes?
+#### 4. What tangible improvements did you observe in the code quality, readability, or potential robustness after applying the fixes?
 
 The improvements were significant:
 
